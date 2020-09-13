@@ -12,7 +12,6 @@ function Resources({ getResourcesUrl }) {
   const [searchValue, setSearchValue] = useState('');
   const [loading, setLoading] = useState(true);
   const [errorMessage, setErrorMessage] = useState(null);
-  // const [movies, setMovies] = useState([]);
 
   useEffect(() => {
     axios
@@ -33,7 +32,7 @@ function Resources({ getResourcesUrl }) {
     setLoading(true);
     setErrorMessage(null);
     axios
-      .get(helper.appendQueryString(getResourcesUrl, searchValue))
+      .get(helper.buildQueryString(getResourcesUrl, searchValue))
       .then(function(response) {
         console.log(response.data);
         setResources(response.data);
